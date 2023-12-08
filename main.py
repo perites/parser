@@ -8,18 +8,18 @@ class Person:
 
     def __init__(self, name: str, mail: str, start_date_str: str, end_date_str: str, one_session_hours: float,
                  line_str: str):
-        self.name = name
-        self.mail = mail
+        self.name: str = name
+        self.mail: str = mail
 
-        self.hours_overall = 0
-        self.session_amount = 0
+        self.hours_overall: float = 0
+        self.session_amount: int = 0
 
-        self.line_str = line_str
+        self.line_str: str = line_str
 
-        self.date_format = '%y.%m.%d %H:%M'
-        self.one_session_hours = one_session_hours
-        self.start_date = datetime.strptime(start_date_str, self.date_format)
-        self.end_date = datetime.strptime(end_date_str, self.date_format)
+        self.date_format: str = '%y.%m.%d %H:%M'
+        self.one_session_hours: float = one_session_hours
+        self.start_date: datetime = datetime.strptime(start_date_str, self.date_format)
+        self.end_date: datetime = datetime.strptime(end_date_str, self.date_format)
         self.check_date()
 
     def check_date(self) -> None:
@@ -29,7 +29,7 @@ class Person:
         self.hours_overall += self.one_session_hours
         self.session_amount += 1
 
-    def merge(self, person: 'Person'):
+    def merge(self, person: 'Person') -> None:
         self.hours_overall += person.hours_overall
         self.session_amount += person.session_amount
 
@@ -48,7 +48,7 @@ class WrongLine(Exception):
     pass
 
 
-def wrong_line(line: str):
+def wrong_line(line: str) -> None:
     with open(error_file_path, 'a') as file:
         file.write(line + "\n")
 
